@@ -28,7 +28,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.10.0
-          package-manager: pnpm@8.14.0
           cache: 'pnpm'
       - run: pnpm build
       - name: Upload artifact
