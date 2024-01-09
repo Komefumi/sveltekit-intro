@@ -14,14 +14,13 @@
 			console.error(error);
 		}
 		user.set(userFound);
-		console.log({ userFoundFromOnMount: userFound });
 	});
 
 	supabase.auth.onAuthStateChange((_, session) => {
 		const foundUser = session?.user || null;
 		user.set(foundUser);
 		if (foundUser) {
-			loadTodos();
+			loadTodos(foundUser.id);
 		}
 	});
 </script>

@@ -7,7 +7,6 @@
 	async function handleLogin() {
 		try {
 			loading = true;
-			console.log({ email });
 			const { error } = await supabase.auth.signInWithOtp({ email });
 			if (error) {
 				throw error;
@@ -37,6 +36,7 @@
 	</div>
 	<button
 		class="w-full shadow-sm rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4"
+		disabled={loading}
 		type="submit"
 	>
 		Log In

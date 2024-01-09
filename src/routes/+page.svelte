@@ -3,12 +3,7 @@
 	import Todo from '../components/todo.svelte';
 	import { loadTodos, todos } from '../stores/todo';
 	import { supabase } from '../lib';
-	import { onMount } from 'svelte';
 	console.log(supabase);
-
-	onMount(() => {
-		loadTodos();
-	});
 </script>
 
 <main>

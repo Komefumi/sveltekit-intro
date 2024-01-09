@@ -1,14 +1,14 @@
 import { writable, type Subscriber, type Unsubscriber } from 'svelte/store';
 import type { INewTodo, ITodo } from '../types/store';
-import { supabase, uuidDefault } from '../lib';
+import { supabase } from '../lib';
 import { TableEnum } from '../types/backend';
 
 export const todos = writable<ITodo[]>([]);
 
 const { TODOS } = TableEnum;
 
-export async function loadTodos() {
-	const { data, error } = await supabase.from(TODOS).select();
+export async function loadTodos(user_id: string) {
+	const { data, error } = await supabase.from(TODOS).select().eq('user_id', user_id);
 	if (error) {
 		console.error(error);
 		return;
@@ -17,14 +17,13 @@ export async function loadTodos() {
 	todos.set(data);
 }
 
-export async function addTodo(text: string, user_id: string = uuidDefault) {
+export async function addTodo(text: string, user_id: string) {
 	const newItem: INewTodo = { text, user_id, completed: false };
 	const { data, error } = await supabase.from(TODOS).insert([newItem]).select('*').single();
 	if (error) {
 		console.error(error);
 		return;
 	}
-	console.log({ data });
 	if (data === null) {
 		console.error('Data retrieved after insertion was null');
 		return;
@@ -33,11 +32,8 @@ export async function addTodo(text: string, user_id: string = uuidDefault) {
 }
 
 export async function deleteTodo(id: string) {
-	console.log({ id });
 	// WRITE AN ARTICLE ABOUT THIS!
 	const result = await supabase.from(TODOS).delete().eq('id', id);
-	// const result = await tables.todos.delete().eq('id', id).select();
-	console.log({ result });
 	const { error } = result;
 	if (error) {
 		console.error(error);
@@ -77,8 +73,6 @@ export async function toggleTodoCompleted(id: string) {
 			__unsubscribe();
 			return;
 		}
-
-		console.log({ data });
 
 		updated = true;
 		todos.set([

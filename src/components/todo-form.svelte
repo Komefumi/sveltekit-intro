@@ -1,11 +1,19 @@
 <script lang="ts">
+	import { user } from '../stores/auth';
 	import { addTodo } from '../stores/todo';
 
 	let todo = '';
-	function handleSubmit() {
-		console.log({ todo });
-		addTodo(todo);
-		todo = '';
+	let submitting = false;
+	async function handleSubmit() {
+		try {
+			submitting = true;
+			await addTodo(todo, $user!.id);
+			todo = '';
+		} catch (error) {
+			console.error(error);
+		} finally {
+			submitting = false;
+		}
 	}
 </script>
 
@@ -24,6 +32,6 @@
 	<button
 		type="submit"
 		class="w-full shadow-sm rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4"
-		>Submit</button
+		disabled={submitting}>Submit</button
 	>
 </form>

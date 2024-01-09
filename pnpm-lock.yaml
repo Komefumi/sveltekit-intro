@@ -8,9 +8,6 @@ dependencies:
   '@supabase/supabase-js':
     specifier: ^2.39.2
     version: 2.39.2
-  uuid:
-    specifier: ^9.0.1
-    version: 9.0.1
 
 devDependencies:
   '@sveltejs/adapter-auto':
@@ -28,9 +25,6 @@ devDependencies:
   '@types/eslint':
     specifier: 8.56.0
     version: 8.56.0
-  '@types/uuid':
-    specifier: ^9.0.7
-    version: 9.0.7
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.0.0
     version: 6.18.0(@typescript-eslint/parser@6.18.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -703,10 +697,6 @@ packages:
 
   /@types/semver@7.5.6:
     resolution: {integrity: sha512-dn1l8LaMea/IjDoHNd9J52uBbInB796CDffS6VdIxvqYCPSG0V0DzHp76GpaWnlhg88uYyPbXCDIowa86ybd5A==}
-    dev: true
-
-  /@types/uuid@9.0.7:
-    resolution: {integrity: sha512-WUtIVRUZ9i5dYXefDEAI7sh9/O7jGvHg7Df/5O/gtH3Yabe5odI3UWopVR1qbPXQtvOxWu3mM4XxlYeZtMWF4g==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@6.18.0(@typescript-eslint/parser@6.18.0)(eslint@8.56.0)(typescript@5.3.3):
@@ -2518,11 +2508,6 @@ packages:
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
-
-  /uuid@9.0.1:
-    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
-    hasBin: true
-    dev: false
 
   /vite@5.0.11:
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
