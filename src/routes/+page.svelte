@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import TodoForm from '../components/todo-form.svelte';
+	import Todo from '../components/todo.svelte';
+	import { todos } from '../stores/todo';
+</script>
+
+<main>
+	<h1 class="text-2xl font-bold text-center text-gray-800 md:text-3xl">My Todos</h1>
+	<TodoForm />
+	{#each $todos as todo (todo.id)}
+		<Todo {todo} />
+	{/each}
+</main>
