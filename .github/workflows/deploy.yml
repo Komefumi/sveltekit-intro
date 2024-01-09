@@ -26,8 +26,14 @@ jobs:
       - uses: actions/configure-pages@v1
         id: pages
       - uses: actions/setup-node@v3
+        name: Install Node
         with:
           node-version: 20.10.0
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8.14.0
+          run_install: false
       - run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
